@@ -408,11 +408,12 @@ window.requestAnimFrame = (function()
                   // too many FPS glitches! so benchmark scene completed (allow to run visually for a few seconds)
                   this.sceneCompletedTime = Date.now();
                   var score = ~~(((this.sceneCompletedTime - this.sceneStartTime) * this.testScore) / 100);
+                  var sceneTime = ~~(this.sceneCompletedTime - this.sceneStartTime);
                   GameHandler.benchmarkScoreCount += score;
                   GameHandler.benchmarkScores.push(score);
                   if (typeof console !== "undefined")
                   {
-                     console.log(score + " [" + this.interval.label + "]");
+                     console.log(this.interval.label + ",  score: " + this.testScore + ",  time: " + sceneTime + "ms ,  canvasmark score: " + score);
                   }
                }
             }
